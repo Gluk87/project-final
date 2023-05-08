@@ -1,7 +1,12 @@
-.idea
+.idea/
+.mvn/
+target/
+logs
 out
 target
+*.iws
 *.iml
+*.ipr
 logs
 *.patch
 
