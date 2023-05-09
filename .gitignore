@@ -9,5 +9,4 @@ target
 *.ipr
 logs
 *.patch
-
-
+env.properties
