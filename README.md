@@ -21,21 +21,22 @@
 ## Тестирование
 - https://habr.com/ru/articles/259055/
 
-## Список выполненных задач:
-1. (+) Разобраться со структурой проекта (onboarding).
-2. (+) Удалить социальные сети: vk, yandex. Easy task
+## List of completed tasks:
+1. (+) Understand the project structure (onboarding).
+2. (+) Delete social networks: vk, yandex. Easy task
    ![alt text](https://github.com/Gluk87/project-final/blob/dev/img/screen2.png)
-3. (+) Вынести чувствительную информацию (логин, пароль БД, идентификаторы для OAuth регистрации/авторизации, настройки почты) в отдельный проперти файл. Значения этих проперти должны считываться при старте сервера из переменных окружения машины. Easy task
+3. (+) Transfer sensitive information (login, database password, identifiers for OAuth registration/authorization, mail settings) to a separate property file. The values of these properties must be read at server startup from the environment variables of the machine. Easy task
    ![alt text](https://github.com/Gluk87/project-final/blob/dev/img/screen3.png)
-4. (+) Переделать тесты так, чтоб во время тестов использовалась in memory БД (H2), а не PostgreSQL. Для этого нужно определить 2 бина, и выборка какой из них использовать должно определяться активным профилем Spring.
+4. (+) Redo the tests so that during the tests the in memory database (H2) is used, and not PostgreSQL. To do this, you need to define 2 beans, and the selection of which one to use should be determined by the active Spring profile.
    ![alt text](https://github.com/Gluk87/project-final/blob/dev/img/screen4.png)
-5. (+) Написать тесты для всех публичных методов контроллера ProfileRestController.
+5. (+) Write tests for all public methods of the ProfileRestController controller.
    ![alt text](https://github.com/Gluk87/project-final/blob/dev/img/screen5.png)
-6. (+) Добавить новый функционал: добавления тегов к задаче. Фронт делать необязательно.
-7. (+) Добавить возможность подписываться на задачи, которые не назначены на текущего пользователя. (Рассылку уведомлений/письма о смене статуса задачи делать не нужно). Фронт делать необязательно.
-8. (+) Добавить автоматический подсчет времени сколько задача находилась в работе и тестировании. Написать 2 метода на уровни сервиса, который параметром принимает задачу и возвращают затраченное время.
+6. (+) Add new functionality: adding tags to the task. The front is optional.
+7. (+) Add the ability to subscribe to tasks that are not assigned to the current user. (There is no need to send notifications/letters about the task status change). The front is optional.
+8. (+) Add automatic calculation of the time how long the task was in work and testing. Write 2 methods on the service levels that take a task as a parameter and return the elapsed time.
    ![alt text](https://github.com/Gluk87/project-final/blob/dev/img/screen8.png)
-9. Написать Dockerfile для основного сервера
+9. Write a Dockerfile for the main server
+   ![alt text](https://github.com/Gluk87/project-final/blob/dev/img/screen9.png)
 10. Написать docker-compose файл для запуска контейнера сервера вместе с БД и nginx. Для nginx используй конфиг-файл config/nginx.conf. При необходимости файл конфига можно редактировать. Hard task
 11. Добавить локализацию минимум на двух языках для шаблонов писем и стартовой страницы index.html.
 12. Реализовать бэклог (backlog) – полный список задач (с пейджингом), которые должны быть выполнены и еще не относятся ни к какому спринту. (бек + фронт). Hard task
