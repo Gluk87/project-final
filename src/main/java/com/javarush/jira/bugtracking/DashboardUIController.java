@@ -1,6 +1,5 @@
 package com.javarush.jira.bugtracking;
 
-import com.javarush.jira.bugtracking.internal.model.Task;
 import com.javarush.jira.bugtracking.internal.model.UserBelong;
 import com.javarush.jira.bugtracking.to.SprintTo;
 import com.javarush.jira.bugtracking.to.TaskTo;
@@ -19,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -38,9 +38,10 @@ public class DashboardUIController {
         return "index";
     }
 
-    @PostMapping(value = "/api/task/{id}/tag", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Task> addTagTask(@PathVariable("id") long id, @RequestParam("tag") String tag) {
-        return new ResponseEntity<>(taskService.saveTag(id, tag), HttpStatus.OK);
+    @PostMapping(value = "/task/{id}/tags", produces = MediaType.APPLICATION_JSON_VALUE)
+    public String addTagTask(@PathVariable("id") long id, @RequestParam("tags") Set<String> tags) {
+        taskService.saveTag(id, tags);
+        return "redirect:/";
     }
 
     @PostMapping(value = "/api/task/{taskId}/user/{userId}", produces = MediaType.APPLICATION_JSON_VALUE)
