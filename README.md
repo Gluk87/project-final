@@ -37,7 +37,6 @@
    ![alt text](https://github.com/Gluk87/project-final/blob/dev/img/screen8.png)
 9. Write a Dockerfile for the main server
    ![alt text](https://github.com/Gluk87/project-final/blob/dev/img/screen9.png)
-10. Написать docker-compose файл для запуска контейнера сервера вместе с БД и nginx. Для nginx используй конфиг-файл config/nginx.conf. При необходимости файл конфига можно редактировать. Hard task
-11. Добавить локализацию минимум на двух языках для шаблонов писем и стартовой страницы index.html.
-12. Реализовать бэклог (backlog) – полный список задач (с пейджингом), которые должны быть выполнены и еще не относятся ни к какому спринту. (бек + фронт). Hard task
-13. Переделать механизм распознавания «свой-чужой» между фронтом и беком с JSESSIONID на JWT. Из сложностей – тебе придётся переделать отправку форм с фронта, чтоб добавлять хедер аутентификации. Hard task
+10. Write a docker-compose file to run the server container along with the database and nginx. For nginx, use the config/nginx.conf config file. If necessary, the config file can be edited. Hard task
+11. (+) Add localization in at least two languages for email templates and index.html start page.
+    ![alt text](https://github.com/Gluk87/project-final/blob/dev/img/screen11.png)
