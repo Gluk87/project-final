@@ -7,6 +7,5 @@ target
 *.iws
 *.iml
 *.ipr
-logs
 *.patch
 env.properties
