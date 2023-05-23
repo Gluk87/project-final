@@ -6,6 +6,5 @@ out
 target
 *.iws
 *.iml
-*.ipr
 *.patch
 env.properties
