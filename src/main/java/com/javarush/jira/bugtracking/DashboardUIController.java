@@ -1,13 +1,10 @@
 package com.javarush.jira.bugtracking;
 
-import com.javarush.jira.bugtracking.internal.model.UserBelong;
 import com.javarush.jira.bugtracking.to.SprintTo;
 import com.javarush.jira.bugtracking.to.TaskTo;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -44,8 +41,9 @@ public class DashboardUIController {
         return "redirect:/";
     }
 
-    @PostMapping(value = "/api/task/{taskId}/user/{userId}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<UserBelong> subscribeTask(@PathVariable("taskId") long taskId, @PathVariable("userId") long userId) {
-        return new ResponseEntity<>(taskService.subscribeTask(taskId, userId), HttpStatus.OK);
+    @PostMapping(value = "/task/{taskId}/user/{userId}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public String subscribeTask(@PathVariable("taskId") long taskId, @PathVariable("userId") long userId) {
+        taskService.subscribeTask(taskId, userId);
+        return "redirect:/";
     }
 }

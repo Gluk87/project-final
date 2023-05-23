@@ -7,7 +7,6 @@ import com.javarush.jira.bugtracking.internal.repository.TaskRepository;
 import com.javarush.jira.bugtracking.internal.repository.UserBelongRepository;
 import com.javarush.jira.bugtracking.to.ObjectType;
 import com.javarush.jira.bugtracking.to.TaskTo;
-import com.javarush.jira.login.Role;
 import com.javarush.jira.login.User;
 import com.javarush.jira.login.internal.UserRepository;
 import jakarta.validation.constraints.Size;
@@ -37,10 +36,9 @@ public class TaskService extends BugtrackingService<Task, TaskTo, TaskRepository
             task.getTags().addAll(tags);
             repository.save(task);
         }
-
     }
 
-    public UserBelong subscribeTask(long taskId, long userId) {
+    public void subscribeTask(long taskId, long userId) {
         Task task = repository.getExisted(taskId);
         User user = userRepository.getExisted(userId);
 
@@ -48,9 +46,7 @@ public class TaskService extends BugtrackingService<Task, TaskTo, TaskRepository
         userBelong.setObjectId(task.getId());
         userBelong.setObjectType(ObjectType.TASK);
         userBelong.setUserId(user.getId());
-        userBelong.setUserTypeCode(user.getRoles().stream().findAny().orElse(Role.DEV).toString());
+        userBelong.setUserTypeCode(user.getRoles().stream().findFirst().toString());
         userBelongRepository.save(userBelong);
-
-        return userBelong;
     }
 }
