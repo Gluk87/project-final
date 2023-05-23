@@ -2,22 +2,19 @@ package com.javarush.jira.bugtracking;
 
 import com.javarush.jira.bugtracking.internal.repository.ActivityRepository;
 import com.javarush.jira.common.error.NotFoundException;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+@AllArgsConstructor
 @Service
 public class ActivityService {
 
     public static final String STATUS_IN_PROGRESS = "in progress";
     public static final String STATUS_READY = "ready";
     public static final String STATUS_DONE = "done";
-
-    ActivityRepository repository;
-
-    public ActivityService(ActivityRepository repository) {
-        this.repository = repository;
-    }
+    private final ActivityRepository repository;
 
     public Long getSecondsForDevelop(Long taskId) {
         Optional<Long> durationOptionalInProgress = repository.getDurationInSeconds(taskId, STATUS_IN_PROGRESS, STATUS_READY);
