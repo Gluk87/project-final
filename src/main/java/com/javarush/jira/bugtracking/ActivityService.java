@@ -16,21 +16,13 @@ public class ActivityService {
     public static final String STATUS_DONE = "done";
     private final ActivityRepository repository;
 
-    public Long getSecondsForDevelop(Long taskId) {
-        Optional<Long> durationOptionalInProgress = repository.getDurationInSeconds(taskId, STATUS_IN_PROGRESS, STATUS_READY);
-        if (durationOptionalInProgress.isPresent()) {
-            return durationOptionalInProgress.get();
-        } else {
-            throw new NotFoundException("Activity with task_id=" + taskId + " not found or task not ready");
-        }
+    public Long getTimeForDevelopInSeconds(Long taskId) {
+        return repository.getDurationInSeconds(taskId, STATUS_IN_PROGRESS, STATUS_READY)
+                .orElseThrow(()-> new NotFoundException("Activity with task_id=" + taskId + " not found or task not ready"));
     }
 
-    public Long getSecondsForTest(Long taskId) {
-        Optional<Long> durationOptionalDone = repository.getDurationInSeconds(taskId, STATUS_READY, STATUS_DONE);
-        if (durationOptionalDone.isPresent()) {
-            return durationOptionalDone.get();
-        } else {
-            throw new NotFoundException("Activity with task_id=" + taskId + " not found or task not ready");
-        }
+    public Long getTimeForTestInSeconds(Long taskId) {
+        return repository.getDurationInSeconds(taskId, STATUS_READY, STATUS_DONE)
+                .orElseThrow(()-> new NotFoundException("Activity with task_id=" + taskId + " not found or task not ready"));
     }
 }

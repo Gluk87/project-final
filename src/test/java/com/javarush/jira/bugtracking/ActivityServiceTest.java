@@ -18,13 +18,13 @@ class ActivityServiceTest {
 
     @Test
     void checkDurationDevelop() {
-        Long durationDevelop = service.getSecondsForDevelop(4L);
+        Long durationDevelop = service.getTimeForDevelopInSeconds(4L);
         Assertions.assertEquals(DURATION_DEVELOP, durationDevelop);
     }
 
     @Test
     void checkDurationTest() {
-        Long durationTest = service.getSecondsForTest(4L);
+        Long durationTest = service.getTimeForTestInSeconds(4L);
         Assertions.assertEquals(DURATION_TEST, durationTest);
     }
 }
