@@ -9,7 +9,7 @@ app:
 
 spring:
   config:
-    import: env.properties
+    import: env.yaml
   jpa:
     show-sql: true
     open-in-view: false
