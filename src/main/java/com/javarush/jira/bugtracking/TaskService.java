@@ -19,7 +19,9 @@ import java.util.Set;
 public class TaskService extends BugtrackingService<Task, TaskTo, TaskRepository> {
 
     private final UserRepository userRepository;
+
     private final UserBelongRepository userBelongRepository;
+
     public TaskService(TaskRepository repository, TaskMapper mapper, UserRepository userRepository, UserBelongRepository userBelongRepository) {
         super(repository, mapper);
         this.userRepository = userRepository;
