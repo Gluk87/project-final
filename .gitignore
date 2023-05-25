@@ -1,8 +1,10 @@
-.idea
+.idea/
+.mvn/
+target/
+logs
 out
 target
+*.iws
 *.iml
-logs
 *.patch
-
-
+env.yaml

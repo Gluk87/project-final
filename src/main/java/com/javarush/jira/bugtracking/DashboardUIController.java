@@ -4,13 +4,18 @@ import com.javarush.jira.bugtracking.to.SprintTo;
 import com.javarush.jira.bugtracking.to.TaskTo;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -28,5 +33,17 @@ public class DashboardUIController {
                 .collect(Collectors.groupingBy(TaskTo::getSprint));
         model.addAttribute("taskMap", taskMap);
         return "index";
+    }
+
+    @PostMapping(value = "/task/{id}/tags", produces = MediaType.APPLICATION_JSON_VALUE)
+    public String addTagTask(@PathVariable("id") long id, @RequestParam("tags") Set<String> tags) {
+        taskService.saveTag(id, tags);
+        return "redirect:/";
+    }
+
+    @PostMapping(value = "/task/{taskId}/user/{userId}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public String subscribeTask(@PathVariable("taskId") long taskId, @PathVariable("userId") long userId) {
+        taskService.subscribeTask(taskId, userId);
+        return "redirect:/";
     }
 }
